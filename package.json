@@ -1,0 +1,41 @@
+{
+  "name": "godfried-app",
+  "version": "1.0.0",
+  "description": "Euclidean sequencer app ",
+  "repository": "git@github.com:m0wh/godfried-app.git",
+  "author": "Malo Widerspach <hello@mowh.fr>",
+  "homepage": "./",
+  "main": "app.js",
+  "scripts": {
+    "dev": "concurrently \"cross-env BROWSER=none parcel -p 3000 index.html\" \"wait-on http://localhost:3000 && electron .\"",
+    "build": "rm -rf .cache build dist && parcel build index.html --out-dir dist --public-url . && electron-builder"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "electron-is-dev": "^1.2.0"
+  },
+  "devDependencies": {
+    "concurrently": "^5.2.0",
+    "cross-env": "^7.0.2",
+    "electron": "^8.2.5",
+    "electron-builder": "^22.6.0",
+    "parcel-bundler": "^1.12.4",
+    "typescript": "^3.9.2",
+    "wait-on": "^5.0.0"
+  },
+  "build": {
+    "appId": "fr.mowh.godfried",
+    "productName": "Godfried Sequencer",
+    "directories": {
+      "output": "build"
+    },
+    "files": [
+      "app.js",
+      "dist/**/*"
+    ],
+    "mac": {
+      "target": "dmg",
+      "category": "public.app-category.music"
+    }
+  }
+}
