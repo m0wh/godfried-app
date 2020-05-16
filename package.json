@@ -7,6 +7,7 @@
   "homepage": "./",
   "main": "app.js",
   "scripts": {
+    "dev:web": "parcel index.html --open",
     "dev": "concurrently \"cross-env BROWSER=none parcel -p 3000 index.html\" \"wait-on http://localhost:3000 && electron .\"",
     "build": "rm -rf .cache build dist && parcel build index.html --out-dir dist --public-url . && electron-builder"
   },
